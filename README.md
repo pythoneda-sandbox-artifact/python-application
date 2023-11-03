@@ -1,2 +1,3 @@
-# sandbox-artifact-application
-Application layer for rydnr/sandbox-artifact
+# pythoneda-sandbox/python-artifact-application
+
+Application layer for pythoneda-sandbox/python-artifact
