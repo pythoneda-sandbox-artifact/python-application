@@ -19,10 +19,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import asyncio
-from pythoneda.application import PythonEDA
+from pythoneda.shared.artifact.application import LocalArtifactApp
+from rydnr.sandbox.artifact.infrastructure import LocalSandboxArtifact
 
 
-class SandboxArtifactApp(PythonEDA):
+class SandboxArtifactApp(LocalArtifactApp):
     """
     Runs the SandboxArtifact PythonEDA app.
 
@@ -50,6 +51,15 @@ class SandboxArtifactApp(PythonEDA):
         except ImportError:
             pass
         super().__init__(banner, __file__)
+
+    @classmethod
+    def local_artifact_class(cls) -> type[LocalArtifact]:
+        """
+        Retrieves the subclass of LocalArtifact.
+        :return: Such class.
+        :rtype: type[LocalArtifact]
+        """
+        return LocalSandboxArtifact
 
 
 if __name__ == "__main__":
