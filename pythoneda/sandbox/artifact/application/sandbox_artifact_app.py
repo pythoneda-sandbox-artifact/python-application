@@ -19,6 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import asyncio
+from pythoneda.shared.artifact import LocalArtifact
 from pythoneda.shared.artifact.application import LocalArtifactApp
 from pythoneda.sandbox.artifact.infrastructure import LocalSandboxArtifact
 
