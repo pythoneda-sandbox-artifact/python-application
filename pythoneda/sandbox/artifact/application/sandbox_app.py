@@ -19,11 +19,24 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import asyncio
+from pythoneda.application import enable
 from pythoneda.shared.artifact import LocalArtifact
 from pythoneda.shared.artifact.application import LocalArtifactApp
 from pythoneda.sandbox.artifact.infrastructure import LocalSandbox
 
 
+from pythoneda.shared.artifact.infrastructure.cli import (
+    RepositoryFolderCli,
+)
+from pythoneda.shared.artifact.infrastructure.dbus import (
+    ArtifactDbusSignalEmitter,
+    ArtifactDbusSignalListener,
+)
+
+
+@enable(ArtifactDbusSignalEmitter)
+@enable(ArtifactDbusSignalListener)
+@enable(RepositoryFolderCli)
 class SandboxApp(LocalArtifactApp):
     """
     Runs the Sandbox artifact PythonEDA app.
@@ -64,6 +77,4 @@ class SandboxApp(LocalArtifactApp):
 
 
 if __name__ == "__main__":
-    asyncio.run(
-        SandboxArtifactApp.main("pythoneda.sandbox.artifact.application.SandboxApp")
-    )
+    asyncio.run(SandboxApp.main("pythoneda.sandbox.artifact.application.SandboxApp"))
